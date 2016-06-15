@@ -1,10 +1,14 @@
 package com.dangdang.reader.client.core;
 
+import com.alibaba.fastjson.TypeReference;
+import com.google.common.reflect.TypeToken;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -12,17 +16,5 @@ import java.util.concurrent.TimeUnit;
  */
 public class PageBase {
 
-    int abc;
-
-    /*
-       加载配置文件，并初始化类对象
-    */
-    public static void loadElement(Class clazz)  {
-
-/*        for(Field field:clazz.getFields()){
-            System.out.println(field.getName());
-        }*/
-        PageFactory.initElements(new AppiumFieldDecorator(null, 5, TimeUnit.SECONDS), clazz);
-    }
 
 }
