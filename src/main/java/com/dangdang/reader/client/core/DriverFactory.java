@@ -1,5 +1,6 @@
 package com.dangdang.reader.client.core;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.WebDriver;
@@ -13,11 +14,11 @@ import java.net.URL;
  */
 public class DriverFactory {
 
-    public static  WebDriver driver =null;
+    public static AppiumDriver driver =null;
     /*
     读取配置文件,创建Driver
      */
-    public static WebDriver getDriver() throws MalformedURLException {
+    public static AppiumDriver getDriver() throws MalformedURLException {
 
         if(driver==null) {
             DesiredCapabilities desiredCapabilities = Config.getAppniumDesiredCapabilities();

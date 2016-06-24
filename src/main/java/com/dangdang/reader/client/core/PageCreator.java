@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by cailianjie on 2016-6-15.
  */
-public class PageManager {
+public class PageCreator {
 
     /*
     创建页面。
@@ -17,7 +17,7 @@ public class PageManager {
         Object o = pageClass.newInstance();
 
 
-        org.openqa.selenium.support.PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver(), 5, TimeUnit.SECONDS), o);
+        org.openqa.selenium.support.PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver(), 10, TimeUnit.SECONDS), o);
 
         return (T) o;
     }

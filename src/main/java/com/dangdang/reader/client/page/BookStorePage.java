@@ -32,12 +32,7 @@ public class BookStorePage extends PageBase{
 	@AndroidFindBy(id = "com.dangdang.reader:id/search_iv")
 	public static AndroidElement 搜索;
 	        
-	@Test
-	public void test(){
-		MainPage page = new MainPage();
-		MainPage.init(page);
-		page.书城.click();
-	}
+
 
 	
     public static void test(AndroidDriver driver){   	
