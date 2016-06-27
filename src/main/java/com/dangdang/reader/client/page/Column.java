@@ -1,6 +1,5 @@
 package com.dangdang.reader.client.page;
 
-import com.dangdang.reader.client.core.DDElement;
 import com.dangdang.reader.client.core.PageBase;
 
 /**
@@ -8,6 +7,6 @@ import com.dangdang.reader.client.core.PageBase;
  */
 public class Column extends PageBase{
 
-     public static  DDElement moreBtn;
+     //public static  DDElement moreBtn;
 
 }
