@@ -1,12 +1,16 @@
 package com.dangdang.reader.client.page;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 import com.dangdang.reader.client.core.PageBase;
-import com.dangdang.reader.client.core.PageManager;
 
 /**
  * Created by cailianjie on 2016-6-2.
@@ -27,19 +31,28 @@ public class BookStorePage extends PageBase{
 	
 	@AndroidFindBy(id = "com.dangdang.reader:id/search_iv")
 	public static AndroidElement 搜索;
+	        
 
-	@Test
-	 public void test() throws Exception{ 
-		System.out.println(driver.currentActivity());
-    	MainPage  mainPage = PageManager.createPage(MainPage.class);
-    	
-    	mainPage.进入书架.click();
-    	mainPage.书城.click();
-    		
-        BookStorePage page1 = PageManager.createPage(BookStorePage.class);         
-        page1.购物车.click();
-              	
+
+	
+    public static void test(AndroidDriver driver){   	
+        	
+        try {
+        	BookStorePage page = new BookStorePage();
+            PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), page);
+            page.购物车.click();
+            
+           // mainPage.发现.click();
+        }catch (Exception e){
+ 
+        }
+        finally {
+            driver.closeApp();
+            driver.quit();
+        }   	
     }
     
-   
+    public static void main(String[] args){
+    	
+    }
 }

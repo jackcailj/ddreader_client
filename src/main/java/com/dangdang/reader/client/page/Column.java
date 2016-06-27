@@ -7,6 +7,6 @@ import com.dangdang.reader.client.core.PageBase;
  */
 public class Column extends PageBase{
 
-     //public static  DDElement moreBtn;
+
 
 }
