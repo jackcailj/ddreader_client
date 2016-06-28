@@ -1,10 +1,6 @@
 package com.dangdang.reader.client.testcase;
 
-import com.dangdang.reader.client.core.Device;
-import com.dangdang.reader.client.core.DriverFactory;
-import com.dangdang.reader.client.core.LoggerUtils;
-import com.dangdang.reader.client.core.PageCreator;
-import com.dangdang.reader.client.page.BookStorePage;
+import com.dangdang.reader.client.core.*;
 import com.dangdang.reader.client.page.MainPage;
 import com.dangdang.reader.client.page.PersonalPage;
 import com.dangdang.reader.client.page.personal_pages.MyPlanListPage;
@@ -13,13 +9,12 @@ import com.dangdang.reader.client.page.plan_pages.InterestTagPage;
 import com.dangdang.reader.client.page.plan_pages.RecommentPlanDetailPage;
 import com.dangdang.reader.client.page.plan_pages.RecommentPlanPage;
 
-import java.awt.peer.SystemTrayPeer;
 import java.net.MalformedURLException;
 
 /**
  * Created by cailianjie on 2016-6-2.
  */
-public class Test extends TestCaseBase{
+public class Test extends TestCaseBase {
 
 
 
