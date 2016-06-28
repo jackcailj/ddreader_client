@@ -11,6 +11,7 @@ public enum  PersonalMenu {
     收藏帖子("帖子"),
     笔记("笔记"),
     摇一摇("摇一摇"),
+    我的订单("订单"),
     签到("签到");
 
     String content="";

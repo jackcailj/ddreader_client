@@ -30,6 +30,7 @@ public class DriverFactory {
                 driver = new IOSDriver(new URL(Config.getAppniumUrl()), desiredCapabilities);
             }
 
+
         }
         return driver;
     }
