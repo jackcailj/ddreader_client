@@ -10,6 +10,8 @@ import io.appium.java_client.pagefactory.*;
 
 import java.net.MalformedURLException;
 
+import org.testng.annotations.Test;
+
 /**
  * Created by cailianjie on 2016-6-2.
  */
@@ -17,21 +19,26 @@ import java.net.MalformedURLException;
 @AndroidFindBy(className="android.widget.FrameLayout1")
 public class MainPage extends PageBase {
 
-
+	@AndroidFindBy(id = "com.dangdang.reader:id/dialog_left_button")
+	public MobileElement button;
+	
+	@AndroidFindBy(id = "com.dangdang.reader:id/dots_ll")
+	public  MobileElement aa;
+		
     @AndroidFindBy(id = "com.dangdang.reader:id/tab_store")
-    public static MobileElement 书城;
+    public  MobileElement 书城;
 
     @AndroidFindBy(id = "com.dangdang.reader:id/tab_personal")
-    public static MobileElement 我的;
+    public  MobileElement 我的;
 
     @AndroidFindBy(id = "com.dangdang.reader:id/tab_shelf")
-    public static MobileElement 书架;
+    public  MobileElement 书架;
 
     @AndroidFindBy(id = "com.dangdang.reader:id/tab_find")
-    public static MobileElement 发现;
+    public  MobileElement 发现;
 
     @AndroidFindBy(id = "com.dangdang.reader:id/tab_home")
-    public static MobileElement 导读;
+    public  MobileElement 导读;
 
 
 
@@ -40,17 +47,23 @@ public class MainPage extends PageBase {
         return PageCreator.createPage(PersonalPage.class);
     }
 
+    @Test
+    public void test() throws IllegalAccessException, InstantiationException, MalformedURLException{
+    	MainPage mainPage = PageCreator.createPage(MainPage.class);
+    	mainPage.button.click();
+    }
 
 
-
-/*    static {
+/*     {
         loadElement(MainPage.class);
     }*/
 
     public static void main(String[] args) throws MalformedURLException {
 
         try {
-
+        	MainPage mainPage = PageCreator.createPage(MainPage.class);
+        	mainPage.button.click();
+        	
 
 
             /*int i=0;
