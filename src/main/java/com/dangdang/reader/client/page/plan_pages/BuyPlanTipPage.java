@@ -28,4 +28,9 @@ public class BuyPlanTipPage {
     public void 购买计划(){
         确定购买.click();
     }
+
+
+    public Double get计划购买价格(){
+        return Double.parseDouble(需支付铃铛.getText());
+    }
 }

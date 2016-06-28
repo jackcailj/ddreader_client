@@ -13,33 +13,48 @@ import java.util.List;
 public class RecommentPlanDetailPage {
 
     @AndroidFindBy(id="com.dangdang.reader:id/recommend_plan_detail_name_tv")
-    MobileElement 计划名称;
+    public MobileElement 计划名称;
 
     @AndroidFindBy(id="com.dangdang.reader:id/recommend_plan_detail_book_count_tv")
-    MobileElement 书籍数量;
+    public MobileElement 书籍数量;
 
     @AndroidFindBy(id="com.dangdang.reader:id/recommend_plan_detail_desc_tv")
-    MobileElement 计划描述;
+    public MobileElement 计划描述;
 
     @AndroidFindBy(id="com.dangdang.reader:id/recommend_plan_detail_days_tv")
-    MobileElement 预计读完天数;
+    public MobileElement 预计读完天数;
 
     @AndroidFindBy(id="com.dangdang.reader:id/recommend_plan_detail_original_price_tv")
-    MobileElement 原价;
+    public MobileElement 原价;
 
     @AndroidFindBy(id="com.dangdang.reader:id/recommend_plan_detail_sale_price_tv")
-    MobileElement 优惠价格;
+    public MobileElement 优惠价格;
 
     @AndroidFindBy(id="com.dangdang.reader:id/book_item_rl")
-    List<TraingInfoWidget> 训练列表;
+    public List<TraingInfoWidget> 训练列表;
 
     @AndroidFindBy(id="com.dangdang.reader:id/buy_plan_tv")
-    MobileElement 购买计划;
+    public MobileElement 购买计划;
 
 
     public BuyPlanTipPage 购买计划() throws IllegalAccessException, MalformedURLException, InstantiationException {
         购买计划.click();
 
         return PageCreator.createPage(BuyPlanTipPage.class);
+    }
+
+    public Double get计划价格(){
+
+        if(优惠价格.getText().equals("免费")){
+            return 0d;
+        }
+
+        Double planPrice = Double.parseDouble(优惠价格.getText());
+
+        return planPrice;
+    }
+
+    public String get计划原价(){
+        return 原价.getText();
     }
 }
