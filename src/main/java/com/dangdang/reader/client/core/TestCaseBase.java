@@ -7,6 +7,7 @@ package com.dangdang.reader.client.core;
 
 import com.dangdang.reader.client.core.DriverFactory;
 import com.dangdang.reader.client.core.LoggerUtils;
+import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.*;
 import org.testng.annotations.*;
 
@@ -17,7 +18,7 @@ import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+@Listeners({ TestNGListener.class })
 public class TestCaseBase {
 
     @BeforeMethod
@@ -38,5 +39,16 @@ public class TestCaseBase {
     @AfterSuite
     public void suitTearDown() throws MalformedURLException {
         DriverFactory.getDriver().quit();
+    }
+
+
+    public static void 返回主页() throws MalformedURLException {
+        AndroidDriver androidDriver = (AndroidDriver) DriverFactory.getDriver();
+
+        String mainActivity="";
+        while(!mainActivity.equals(".MainActivity")) {
+            Device.android_按返回键();
+            mainActivity=androidDriver.currentActivity();
+        }
     }
 }

@@ -45,11 +45,11 @@ public class RecommentPlanDetailPage {
 
     public Double get计划价格(){
 
-        if(优惠价格.getText().equals("免费")){
+        if(优惠价格.getText().equals("计划价：免费")){
             return 0d;
         }
 
-        Double planPrice = Double.parseDouble(优惠价格.getText());
+        Double planPrice = Double.parseDouble(优惠价格.getText().replace("原价：￥",""));
 
         return planPrice;
     }
