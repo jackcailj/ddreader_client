@@ -57,4 +57,8 @@ public class RecommentPlanDetailPage {
     public String get计划原价(){
         return 原价.getText();
     }
+
+    public String get计划名称(){
+        return 计划名称.getText();
+    }
 }
