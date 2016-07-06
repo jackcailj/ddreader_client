@@ -12,21 +12,23 @@ import org.testng.annotations.AfterSuite;
 public class PageBase {
 	@SuppressWarnings("rawtypes")
 	//public static AppiumDriver driver;
-	public static AndroidDriver driver;
+	public static AppiumDriver driver;
 	
 	static{
 		try {
-			driver = (AndroidDriver) DriverFactory.getDriver();
+			driver = DriverFactory.getDriver();
 			//driver = DriverFactory.getDriver();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
 	
 	@AfterSuite(alwaysRun=true)
 	public void tearDown() throws Exception {
 		DriverFactory.getDriver().quit();
 	}
 
-
+	public  void setUp() throws IllegalAccessException, InstantiationException, MalformedURLException {
+	}
 }
+

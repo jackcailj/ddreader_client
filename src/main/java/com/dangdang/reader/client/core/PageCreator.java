@@ -19,6 +19,9 @@ public class PageCreator {
 
         org.openqa.selenium.support.PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver(), 60, TimeUnit.SECONDS), o);
 
+        PageBase pageBase = (PageBase) o;
+        pageBase.setUp();
+
         return (T) o;
     }
 }

@@ -6,14 +6,20 @@ import com.dangdang.reader.client.page.personal_pages.MyPlanListPage;
 import com.dangdang.reader.client.page.personal_pages.PersonalMenu;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.WithTimeout;
+import io.appium.java_client.pagefactory.iOSFindBy;
+import io.appium.java_client.pagefactory.iOSFindBys;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by cailianjie on 2016-6-22.
  */
-public class PersonalPage {
+public class PersonalPage extends PageBase{
 
     @AndroidFindBy(id="com.dangdang.reader:id/honor")
     public MobileElement 头衔;
@@ -34,20 +40,40 @@ public class PersonalPage {
     public MobileElement 阅历;
 
     @AndroidFindBy(id="com.dangdang.reader:id/icon_jd_checkin_tv")
+    @iOSFindBy(uiAutomator = ".tableViews()[\"tableView\"].cells()[\"摇一摇\"].staticTexts()[\"签到\"]")
     public MobileElement 签到;
 
     @AndroidFindBy(id="com.dangdang.reader:id/icon_read_plan_tv")
+    @iOSFindBy(uiAutomator = ".tableViews()[\"tableView\"].cells()[\"读书计划\"].staticTexts()[\"读书计划\"]")
     public MobileElement 读书计划;
 
     @AndroidFindBy(id="com.dangdang.reader:id/icon_jd_shake_tv")
     //@AndroidFindBy(xpath="//android.widget.TextView[contains(@text,'摇一摇')]")
+    //
+    @iOSFindBy(uiAutomator = ".tableViews()[\"tableView\"].cells()[\"摇一摇\"].staticTexts()[\"摇一摇\"]")
+    //@iOSFindBy(xpath = "//UIATableView/UIATableCell/UIAStaticText[@name=\"摇一摇\"]")
     public MobileElement 摇一摇;
+
+
+    @iOSFindBy(uiAutomator = ".images()[\"UserCenter_PullNew\"]")
+    @WithTimeout(time=5,unit= TimeUnit.SECONDS)
+    public MobileElement 引导;
 
     public Double get金铃铛数量(){
         return Double.parseDouble(金铃铛.getText());
     }
 
 
+
+
+    @Override
+    public void setUp() {
+        try{
+            引导.click();
+        }catch (Exception e){
+            System.out.println(LoggerUtils.getStrackTrace(e));
+        }
+    }
 
     public MyPlanListPage 打开我的计划列表页面() throws MalformedURLException, InstantiationException, IllegalAccessException {
         //DriverFactory.getDriver().findElement(By.name(PersonalMenu.读书计划.toString())).click();
@@ -84,7 +110,13 @@ public class PersonalPage {
     }
 
     public MyPlanListPage 打开摇一摇页面() throws MalformedURLException, InstantiationException, IllegalAccessException {
+        //JavascriptExecutor js = (JavascriptExecutor) driver;
+        //js.executeScript("UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[\"tableView\"].cells()[\"摇一摇\"].staticTexts()[\"摇一摇\"].scrollToVisible()");
+
+        //DeviceUtils.swip(DriverFactory.getDriver(),DeviceOrientation.UP);
         摇一摇.click();
+        //摇一摇.click();
+       // 摇一摇.click();ß
         return PageCreator.createPage(MyPlanListPage.class);
     }
 
