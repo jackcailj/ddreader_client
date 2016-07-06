@@ -1,4 +1,4 @@
-package com.dangdang.reader.client.page;
+package com.dangdang.reader.client.page.bookstore;
 
 import com.dangdang.reader.client.core.PageBase;
 

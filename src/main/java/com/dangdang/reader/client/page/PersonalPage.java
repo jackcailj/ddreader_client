@@ -1,13 +1,12 @@
 package com.dangdang.reader.client.page;
 
 import com.dangdang.reader.client.core.DriverFactory;
-import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import com.dangdang.reader.client.page.personal_pages.MyPlanListPage;
+import com.dangdang.reader.client.page.personal_pages.PersonalMenu;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import java.net.MalformedURLException;
 

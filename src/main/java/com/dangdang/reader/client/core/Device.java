@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.dangdang.reader.client.util.DUtils;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.apache.commons.io.FileUtils;
@@ -151,7 +151,7 @@ public class Device {
             String screenShotFullName = LoggerUtils.getLogsFile() + "_" + System.currentTimeMillis() + ".jpg";
             FileUtils.copyFile(screenShot, new File(screenShotFullName));
         }catch (Exception e){
-            logger.error(DUtils.getStrackTrace(e));
+            logger.error(LoggerUtils.getStrackTrace(e));
         }
     }
 
