@@ -46,7 +46,12 @@ public class Config {
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         for (String key:appniumParam.keySet()){
-            desiredCapabilities.setCapability(key,appniumParam.get(key));
+            if(key.equals("launchTimeout")) {
+                desiredCapabilities.setCapability(key, Integer.parseInt(appniumParam.get(key).toString()));
+            }
+            else {
+                desiredCapabilities.setCapability(key, appniumParam.get(key));
+            }
         }
         return desiredCapabilities;
     }

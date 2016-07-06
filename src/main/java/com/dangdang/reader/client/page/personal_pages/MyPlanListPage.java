@@ -1,5 +1,6 @@
 package com.dangdang.reader.client.page.personal_pages;
 
+import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import com.dangdang.reader.client.page.plan_pages.InterestTagPage;
 import io.appium.java_client.MobileElement;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by cailianjie on 2016-6-22.
  */
-public class MyPlanListPage {
+public class MyPlanListPage extends PageBase{
 
     //@AndroidFindBy(id = "com.dangdang.reader:id/plan_rl")
     public  List<PlanItemWidget> 计划列表;

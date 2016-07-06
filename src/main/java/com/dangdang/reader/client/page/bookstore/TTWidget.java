@@ -20,7 +20,7 @@ public class TTWidget extends PageBase{
 		mainPage.button.click();
 		mainPage.aa.click();
 		mainPage.书城.click();
-		System.out.println("activity:" + driver.currentActivity());
+		//System.out.println("activity:" + driver.currentActivity());
 		TTWidget ttPage = PageCreator.createPage(TTWidget.class);		
 		Set<String> contextNames = driver.getContextHandles();
 		System.out.println("aaaaa" + contextNames);
