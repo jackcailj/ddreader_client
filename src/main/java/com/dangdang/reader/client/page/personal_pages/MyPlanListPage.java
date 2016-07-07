@@ -3,6 +3,7 @@ package com.dangdang.reader.client.page.personal_pages;
 import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import com.dangdang.reader.client.page.plan_pages.InterestTagPage;
+import com.dangdang.reader.client.page.plan_pages.PlanDetailPage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
@@ -30,6 +31,11 @@ public class MyPlanListPage extends PageBase{
 
         return PageCreator.createPage(InterestTagPage.class);
 
+    }
+
+
+    public PlanDetailPage 进入计划详情页() throws IllegalAccessException, MalformedURLException, InstantiationException {
+        return 计划列表.get(0).进入计划详情页();
     }
 
 

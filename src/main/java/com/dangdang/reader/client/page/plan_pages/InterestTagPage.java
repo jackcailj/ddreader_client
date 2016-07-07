@@ -1,5 +1,6 @@
 package com.dangdang.reader.client.page.plan_pages;
 
+import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import com.dangdang.reader.client.page.plan_pages.RecommentPlanPage;
 import io.appium.java_client.MobileElement;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * 兴趣选择页面
  */
-public class InterestTagPage {
+public class InterestTagPage extends PageBase{
 
     @AndroidFindBy(id = "com.dangdang.reader:id/next_tv")
     public MobileElement 挑选读书计划按钮;

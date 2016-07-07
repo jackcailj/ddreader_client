@@ -1,12 +1,14 @@
 package com.dangdang.reader.client.page.plan_pages;
 
+import com.alibaba.fastjson.serializer.DoubleArraySerializer;
+import com.dangdang.reader.client.core.PageBase;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
 /**
  * Created by cailianjie on 2016-6-23.
  */
-public class BuyPlanTipPage {
+public class BuyPlanTipPage extends PageBase{
 
     @AndroidFindBy(id="com.dangdang.reader:id/price_tv")
     MobileElement 需支付铃铛;
@@ -30,7 +32,12 @@ public class BuyPlanTipPage {
     }
 
 
-    public Double get计划购买价格(){
-        return Double.parseDouble(需支付铃铛.getText());
+    public Integer get计划购买价格(){
+        return Integer.parseInt(需支付铃铛.getText().replace("铃铛",""));
     }
+
+    public Integer get铃铛余额(){
+        return Integer.parseInt(铃铛余额.getText().replace("铃铛",""));
+    }
+
 }

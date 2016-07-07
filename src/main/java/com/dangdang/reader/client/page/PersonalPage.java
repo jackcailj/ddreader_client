@@ -1,6 +1,8 @@
 package com.dangdang.reader.client.page;
 
 import com.dangdang.reader.client.core.DriverFactory;
+import com.dangdang.reader.client.core.LoggerUtils;
+import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import com.dangdang.reader.client.page.personal_pages.MyPlanListPage;
 import com.dangdang.reader.client.page.personal_pages.PersonalMenu;
@@ -19,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by cailianjie on 2016-6-22.
  */
-public class PersonalPage extends PageBase{
+public class PersonalPage extends PageBase {
 
     @AndroidFindBy(id="com.dangdang.reader:id/honor")
     public MobileElement 头衔;
@@ -56,11 +58,12 @@ public class PersonalPage extends PageBase{
 
 
     @iOSFindBy(uiAutomator = ".images()[\"UserCenter_PullNew\"]")
+    @AndroidFindBy(id = "com.dangdang.reader:id/guide")
     @WithTimeout(time=5,unit= TimeUnit.SECONDS)
     public MobileElement 引导;
 
-    public Double get金铃铛数量(){
-        return Double.parseDouble(金铃铛.getText());
+    public Integer get金铃铛数量(){
+        return Integer.parseInt(金铃铛.getText());
     }
 
 
@@ -69,7 +72,7 @@ public class PersonalPage extends PageBase{
     @Override
     public void setUp() {
         try{
-            引导.click();
+            //引导.click();
         }catch (Exception e){
             System.out.println(LoggerUtils.getStrackTrace(e));
         }

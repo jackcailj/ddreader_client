@@ -51,6 +51,7 @@ public class MainPage extends PageBase {
 
 
     @iOSFindBy(uiAutomator = ".images()[\"CloudShelf_Guide_Desc\"]")
+    @AndroidFindBy(id="com.dangdang.reader:id/tip2")
     @WithTimeout(time=5,unit= TimeUnit.SECONDS)
     public MobileElement 引导;
 
@@ -59,7 +60,7 @@ public class MainPage extends PageBase {
     @Override
     public void setUp() {
         try{
-            引导.click();
+         //   引导.click();
         }
         catch (Exception e){
             System.out.println(LoggerUtils.getStrackTrace(e));

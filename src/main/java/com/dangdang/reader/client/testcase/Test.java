@@ -24,11 +24,10 @@ public class Test extends TestCaseBase {
         //打开我的页面
         MainPage mainPage = PageCreator.createPage(MainPage.class);
         PersonalPage personalPage = mainPage.打开我的页面();
-        Double goldLingDangNum = personalPage.get金铃铛数量();
+        Integer goldLingDangNum = personalPage.get金铃铛数量();
 
         //进入计划兴趣选择页面
-        MyPlanListPage myPlanListPage = personalPage.打开我的计划列表页面();
-        InterestTagPage interestTagPage = myPlanListPage.打开兴趣选择页面();
+        InterestTagPage interestTagPage = personalPage.打开我的计划列表页面().打开兴趣选择页面();
 
         RecommentPlanPage recommentPlanPage = interestTagPage.选择标签(1);
         RecommentPlanDetailPage recommentPlanDetailPage = recommentPlanPage.进入推荐计划详情页面(1);
@@ -43,12 +42,13 @@ public class Test extends TestCaseBase {
         }
         else{
             //assert (recommentPlanDetailPage.购买计划.getText().equals("购买计划"));
-            recommentPlanDetailPage.购买计划();
+
 
             BuyPlanTipPage buyPlanTipPage = recommentPlanDetailPage.购买计划();
 
-            Double buyPlanPrice = buyPlanTipPage.get计划购买价格();
-            assert (planPrice==buyPlanPrice);
+            Integer buyPlanPrice = buyPlanTipPage.get计划购买价格();
+            assert (planPrice*100==buyPlanPrice);
+            assert (personalPage.get金铃铛数量()==buyPlanTipPage.get铃铛余额());
             buyPlanTipPage.购买计划();
         }
 
@@ -60,7 +60,7 @@ public class Test extends TestCaseBase {
         assert (personalPage.get金铃铛数量()==goldLingDangNum-planPrice);
 
         //验证我的计划中的一个为新加入的计划
-        myPlanListPage = personalPage.打开我的计划列表页面();
+        MyPlanListPage myPlanListPage = personalPage.打开我的计划列表页面();
 
         PlanItemWidget planItem = myPlanListPage.计划列表.get(0);
         assert (planItem.get计划名称().equals(planName));

@@ -1,6 +1,8 @@
 package com.dangdang.reader.client.page.personal_pages;
 
 import com.dangdang.reader.client.core.DriverFactory;
+import com.dangdang.reader.client.core.PageCreator;
+import com.dangdang.reader.client.page.plan_pages.PlanDetailPage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -64,6 +66,13 @@ public class PlanItemWidget extends Widget{
     public String get计划名称() {
         return 计划名称.getText();
     }
+
+    public PlanDetailPage 进入计划详情页() throws IllegalAccessException, MalformedURLException, InstantiationException {
+        计划名称.click();
+
+        return PageCreator.createPage(PlanDetailPage.class);
+    }
+
 
 
 }

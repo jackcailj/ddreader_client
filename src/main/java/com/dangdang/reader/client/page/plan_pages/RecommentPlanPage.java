@@ -1,5 +1,6 @@
 package com.dangdang.reader.client.page.plan_pages;
 
+import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Created by cailianjie on 2016-6-23.
  */
-public class RecommentPlanPage {
+public class RecommentPlanPage extends PageBase{
 
     List<RecommentPlanWidget> 推荐计划列表;
 

@@ -1,5 +1,6 @@
 package com.dangdang.reader.client.page.plan_pages;
 
+import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Created by cailianjie on 2016-6-23.
  */
-public class RecommentPlanDetailPage {
+public class RecommentPlanDetailPage extends PageBase{
 
     @AndroidFindBy(id="com.dangdang.reader:id/recommend_plan_detail_name_tv")
     public MobileElement 计划名称;
@@ -49,7 +50,7 @@ public class RecommentPlanDetailPage {
             return 0d;
         }
 
-        Double planPrice = Double.parseDouble(优惠价格.getText().replace("原价：￥",""));
+        Double planPrice = Double.parseDouble(优惠价格.getText().replace("计划价：￥",""));
 
         return planPrice;
     }
