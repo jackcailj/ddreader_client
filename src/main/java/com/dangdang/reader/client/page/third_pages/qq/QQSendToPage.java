@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
  */
 public class QQSendToPage extends PageBase{
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"我的电脑\"")
+    @AndroidFindBy(xpath = "//android.widget.AbsListView/android.widget.RelativeLayout[2]")
     public MobileElement 我的电脑;
 
 

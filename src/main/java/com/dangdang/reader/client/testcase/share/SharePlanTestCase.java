@@ -46,7 +46,8 @@ public class SharePlanTestCase extends TestCaseBase{
 
         SentToConfirmPage sentToConfirmPage = planDetailPage.打开分享页面().分享到QQ好友().发送到我的电脑();
         assert (sentToConfirmPage.get标题().equals(planName));
-        assert (planDesc.contains(sentToConfirmPage.get内容().replace("...","")));
+        //assert (planDesc.contains(sentToConfirmPage.get内容().replace("...","")));
+        assert (planDesc.replace("...","").contains(sentToConfirmPage.get内容().replace("...","")));
 
         SentResultPage sentResultPage= sentToConfirmPage.发送();
         assert (sentResultPage.is发送成功()==true);
