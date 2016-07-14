@@ -51,4 +51,14 @@ public class TestCaseBase {
             mainActivity=androidDriver.currentActivity();
         }
     }
+
+    public static void 返回当当读书() throws MalformedURLException {
+        DriverFactory.getDriver().navigate().back();
+    }
+
+
+    @AfterClass
+    public void afterClass() throws MalformedURLException {
+        返回主页();
+    }
 }
