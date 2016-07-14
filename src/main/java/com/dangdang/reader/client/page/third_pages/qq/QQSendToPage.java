@@ -1,5 +1,6 @@
 package com.dangdang.reader.client.page.third_pages.qq;
 
+import com.dangdang.reader.client.core.DriverFactory;
 import com.dangdang.reader.client.core.PageBase;
 import com.dangdang.reader.client.core.PageCreator;
 import io.appium.java_client.MobileElement;
@@ -7,6 +8,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AndroidFindBys;
 
 import java.net.MalformedURLException;
+import java.sql.Driver;
 
 /**
  * Created by cailianjie on 2016-7-7.

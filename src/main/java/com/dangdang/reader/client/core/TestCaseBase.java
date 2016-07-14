@@ -56,6 +56,10 @@ public class TestCaseBase {
         DriverFactory.getDriver().navigate().back();
     }
 
+    public  void 用例结束返回() throws Exception {
+
+    }
+
 
     @AfterClass
     public void afterClass() throws MalformedURLException {
