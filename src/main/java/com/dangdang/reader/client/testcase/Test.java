@@ -72,17 +72,21 @@ public class Test extends TestCaseBase {
 
    public static void main(String[] args) throws IllegalAccessException, MalformedURLException, InstantiationException {
        try {
-           AndroidDriver androidDriver = (AndroidDriver) DriverFactory.getDriver();
+           /*AndroidDriver androidDriver = (AndroidDriver) DriverFactory.getDriver();
            System.out.println(androidDriver.currentActivity());
 
            MainPage mainPage = PageCreator.createPage(MainPage.class);
            MyPlanListPage myPlanListPage = mainPage.打开我的页面().打开摇一摇页面();
-           返回主页();
+           返回主页();*/
+
+           String str ="一生中总会有艰难时刻,失恋失业情绪低落...这时试试阅读吧,读...";
+           System.out.println(str.replaceFirst("(^.+)...(.+$)", "$1$2"));
+
        }catch (Exception e){
 
        }
        finally {
-           DriverFactory.getDriver().quit();
+           //DriverFactory.getDriver().quit();
        }
    }
 }

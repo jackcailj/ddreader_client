@@ -36,6 +36,10 @@ public class SharePlanTestCase extends TestCaseBase{
         planDesc=planDetailPage.get计划描述();
     }
 
+    @AfterClass
+    public void afterTestCase() throws MalformedURLException {
+        返回主页();
+    }
 
     @Test
     public void 分享读书计划详情到QQ() throws Exception {

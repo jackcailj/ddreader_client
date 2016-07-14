@@ -5,8 +5,8 @@ package com.dangdang.reader.client.core;
  */
 public class Utils {
 
-    static String[] cn=new String[]{"？","《","》","，","。","；","‘","“","’","”","（","）","『","』","、","×","……","！"};
-    static String[] en=new String[]{"?","<",">",",",".",";","'","\"","'","\"","(",")","[","]","","*","...","!"};
+    static String[] cn=new String[]{"？","《","》","，","。","；","‘","“","’","”","（","）","『","』","、","×","……","！","，"};
+    static String[] en=new String[]{"?","<",">",",",".",";","'","\"","'","\"","(",")","[","]","","*","...","!",","};
 
     public static String formatString(String str){
 

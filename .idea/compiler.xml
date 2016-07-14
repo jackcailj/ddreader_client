@@ -27,6 +27,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ddreader_client" target="1.5" />
+      <module name="java-client" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
