@@ -9,6 +9,7 @@ import com.dangdang.reader.client.core.DriverFactory;
 import com.dangdang.reader.client.core.LoggerUtils;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.*;
+import org.apache.log4j.net.SyslogAppender;
 import org.testng.annotations.*;
 
 import java.io.File;
@@ -41,15 +42,26 @@ public class TestCaseBase {
         DriverFactory.getDriver().quit();
     }
 
-
-    public static void 返回主页() throws MalformedURLException {
+    public static void 返回到Activity(String activityName) throws MalformedURLException {
         AndroidDriver androidDriver = (AndroidDriver) DriverFactory.getDriver();
 
         String mainActivity="";
-        while(!mainActivity.equals(".MainActivity")) {
+
+        Long time = System.currentTimeMillis();
+        while(!mainActivity.equals(activityName)) {
             Device.android_按返回键();
             mainActivity=androidDriver.currentActivity();
+
+            Long curTime =System.currentTimeMillis();
+            if(curTime-time>60000){
+                break;
+            }
         }
+    }
+
+
+    public static void 返回主页() throws MalformedURLException {
+        返回到Activity(".MainActivity");
     }
 
     public static void 返回当当读书() throws MalformedURLException {

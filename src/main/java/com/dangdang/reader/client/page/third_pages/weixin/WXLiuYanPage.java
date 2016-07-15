@@ -41,6 +41,7 @@ public class WXLiuYanPage extends PageBase{
         留言.setValue(留言内容);
         确认分享.click();
 
+
         return PageCreator.createPage(WXShareResultPage.class);
 
     }
@@ -52,6 +53,10 @@ public class WXLiuYanPage extends PageBase{
 
     public String get计划描述(){
         return Utils.formatString(计划描述.getText());
+    }
+
+    public void 取消分享(){
+        取消分享.click();
     }
 
 }

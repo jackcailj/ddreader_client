@@ -1,5 +1,7 @@
 package com.dangdang.reader.client.testcase.share;
 
+import com.dangdang.reader.client.core.Device;
+import com.dangdang.reader.client.core.DriverFactory;
 import com.dangdang.reader.client.core.PageCreator;
 import com.dangdang.reader.client.core.TestCaseBase;
 import com.dangdang.reader.client.page.MainPage;
@@ -12,12 +14,14 @@ import com.dangdang.reader.client.page.third_pages.weixin.WXLiuYanPage;
 import com.dangdang.reader.client.page.third_pages.weixin.WXSelectShareObjectPage;
 import com.dangdang.reader.client.page.third_pages.weixin.WXShareResultPage;
 import com.dangdang.reader.client.page.third_pages.weixin_quan.WXQSharePage;
+import io.appium.java_client.android.AndroidDriver;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
+import java.util.Map;
 
 /**
  * Created by cailianjie on 2016-7-7.
@@ -40,6 +44,7 @@ public class SharePlanTestCase extends TestCaseBase {
     @Override
     public void 用例结束返回() throws MalformedURLException {
         返回当当读书();
+
     }
 
 
@@ -78,15 +83,20 @@ public class SharePlanTestCase extends TestCaseBase {
         WXSelectShareObjectPage wxSelectShareObjectPage = planDetailPage.打开分享页面().分享到微信好友();
         WXLiuYanPage wxLiuYanPage = wxSelectShareObjectPage.分享给第一个联系人();
 
+        try {
+            assert (planName.equals(wxLiuYanPage.get计划名称()));
+            assert (planDesc.contains(wxLiuYanPage.get计划描述()));
 
-        assert (planName.equals(wxLiuYanPage.get计划名称()));
-        assert (planDesc.contains(wxLiuYanPage.get计划描述()));
+            WXShareResultPage wxShareResultPage = wxLiuYanPage.留言并分享("当当读书计划，精彩");
+            assert (wxShareResultPage.is分享成功());
 
-        WXShareResultPage wxShareResultPage = wxLiuYanPage.留言并分享("当当读书计划，精彩");
-        assert (wxShareResultPage.is分享成功());
-
-        wxShareResultPage.返回当当读书客户端();
-
+            wxShareResultPage.返回当当读书客户端();
+        }catch (Exception e) {
+            throw e;
+        }
+        finally {
+            wxLiuYanPage.取消分享();
+        }
     }
 
 
