@@ -1,5 +1,7 @@
 package com.dangdang.reader.client.testcase.share;
 
+import com.dangdang.reader.client.core.Device;
+import com.dangdang.reader.client.core.DriverFactory;
 import com.dangdang.reader.client.core.PageCreator;
 import com.dangdang.reader.client.core.TestCaseBase;
 import com.dangdang.reader.client.page.MainPage;
@@ -12,17 +14,19 @@ import com.dangdang.reader.client.page.third_pages.weixin.WXLiuYanPage;
 import com.dangdang.reader.client.page.third_pages.weixin.WXSelectShareObjectPage;
 import com.dangdang.reader.client.page.third_pages.weixin.WXShareResultPage;
 import com.dangdang.reader.client.page.third_pages.weixin_quan.WXQSharePage;
+import io.appium.java_client.android.AndroidDriver;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
+import java.util.Map;
 
 /**
  * Created by cailianjie on 2016-7-7.
  */
-public class SharePlanTestCase extends TestCaseBase{
+public class SharePlanTestCase extends TestCaseBase {
 
     String planName;
     String planDesc;
@@ -30,69 +34,74 @@ public class SharePlanTestCase extends TestCaseBase{
 
     @BeforeClass
     public void beforeTestCase() throws IllegalAccessException, MalformedURLException, InstantiationException {
-        MainPage mainPage  = PageCreator.createPage(MainPage.class);
+        MainPage mainPage = PageCreator.createPage(MainPage.class);
         planDetailPage = mainPage.打开我的页面().打开我的计划列表页面().进入计划详情页();
-        planName=planDetailPage.get计划名称();
-        planDesc=planDetailPage.get计划描述();
+        planName = planDetailPage.get计划名称();
+        planDesc = planDetailPage.get计划描述();
     }
 
-    @AfterClass
-    public void afterTestCase() throws MalformedURLException {
-        返回主页();
+
+    @Override
+    public void 用例结束返回() throws MalformedURLException {
+        返回当当读书();
+
     }
+
 
     @Test
-    public void 分享读书计划详情到QQ() throws IllegalAccessException, MalformedURLException, InstantiationException {
+    public void 分享读书计划详情到QQ() throws Exception {
 
         SentToConfirmPage sentToConfirmPage = planDetailPage.打开分享页面().分享到QQ好友().发送到我的电脑();
         assert (sentToConfirmPage.get标题().equals(planName));
-        //assert (planDesc.contains(sentToConfirmPage.get内容().replace("...","")));
-        assert (planDesc.replace("...","").contains(sentToConfirmPage.get内容().replace("...","")));
+        assert (planDesc.contains(sentToConfirmPage.get内容().replace("...", "")));
 
-        SentResultPage sentResultPage= sentToConfirmPage.发送();
-        assert (sentResultPage.is发送成功()==true);
+        SentResultPage sentResultPage = sentToConfirmPage.发送();
+        assert (sentResultPage.is发送成功() == true);
 
         sentResultPage.返回当当读书();
 
-        //返回主页();
     }
 
 
     @Test
-    public void 分享读书计划详情到QQ空间() throws IllegalAccessException, MalformedURLException, InstantiationException {
+    public void 分享读书计划详情到QQ空间() throws Exception {
 
         QQZonePublishPage qqZonePublishPage = planDetailPage.打开分享页面().分享到QQ空间();
 
         assert (planName.equals(qqZonePublishPage.get计划名称()));
-        assert (planDesc.contains(qqZonePublishPage.get计划描述().replace("...","")));
+        assert (planDesc.contains(qqZonePublishPage.get计划描述().replace("...", "")));
 
         qqZonePublishPage.发表分享();
 
-        //返回主页();
     }
 
 
     @Test
-    public void 分享读书计划详情到微信好友() throws IllegalAccessException, MalformedURLException, InstantiationException {
+    public void 分享读书计划详情到微信好友() throws Exception {
+
 
         WXSelectShareObjectPage wxSelectShareObjectPage = planDetailPage.打开分享页面().分享到微信好友();
         WXLiuYanPage wxLiuYanPage = wxSelectShareObjectPage.分享给第一个联系人();
 
+        try {
+            assert (planName.equals(wxLiuYanPage.get计划名称()));
+            assert (planDesc.contains(wxLiuYanPage.get计划描述()));
 
-        assert (planName.equals(wxLiuYanPage.get计划名称()));
-        assert (planDesc.contains(wxLiuYanPage.get计划描述()));
+            WXShareResultPage wxShareResultPage = wxLiuYanPage.留言并分享("当当读书计划，精彩");
+            assert (wxShareResultPage.is分享成功());
 
-        WXShareResultPage wxShareResultPage = wxLiuYanPage.留言并分享("当当读书计划，精彩");
-        assert (wxShareResultPage.is分享成功());
-
-        wxShareResultPage.返回当当读书客户端();
-
-        //返回主页();
+            wxShareResultPage.返回当当读书客户端();
+        }catch (Exception e) {
+            throw e;
+        }
+        finally {
+            wxLiuYanPage.取消分享();
+        }
     }
 
 
     @Test
-    public void 分享读书计划详情到微信朋友圈() throws IllegalAccessException, MalformedURLException, InstantiationException {
+    public void 分享读书计划详情到微信朋友圈() throws Exception {
 
 
         WXQSharePage wxqSharePage = planDetailPage.打开分享页面().分享到微信朋友圈();
@@ -101,8 +110,6 @@ public class SharePlanTestCase extends TestCaseBase{
 
         wxqSharePage.分享到朋友圈("当当读书计划，很精彩！");
 
-
-        //返回主页();
     }
 
     @Test()
